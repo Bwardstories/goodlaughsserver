@@ -34,6 +34,7 @@ router.post("/signup", async (req, res) => {
           username,
           email,
           passwordHash: hashedpassword,
+          isAdmin: email === "thewardbunch@gmail.com" ? true : false,
         });
         user
           .save()
@@ -51,7 +52,7 @@ router.post("/signup", async (req, res) => {
 });
 
 // ROUTE FOR SIGNING IN WITH EXISTING ACCOUNT
-router.post("/signin", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   // checks for password and email
   if (!email || !password) {
@@ -77,7 +78,9 @@ router.post("/signin", async (req, res) => {
   };
 
   const token = jwt.sign(userForToken, process.env.SECRET);
-  res.status(200).send({ token, username, id: user._id });
+  res
+    .status(200)
+    .send({ token, username, id: user._id, isAdmin: user.isAdmin });
 });
 
 module.exports = router;
