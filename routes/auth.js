@@ -63,9 +63,11 @@ router.post("/login", async (req, res) => {
   //  searches for user by email, and then compares the password with the hashed password
   const user = await User.findOne({ email: email });
 
+  if (!user) {
+    return res.status(401).json({ error: "That Email is not registered" });
+  }
   const match = await bcrypt.compare(password, user.passwordHash);
   // if password doesn't match, sends back a 401 status and error message
-  console.log(user, match);
   if (!(user && match)) {
     return res.status(401).json({ error: "Invalid username and/or password" });
   }
@@ -77,14 +79,13 @@ router.post("/login", async (req, res) => {
   };
 
   const token = jwt.sign(userForToken, process.env.SECRET);
-  res
-    .status(200)
-    .send({
-      token,
-      username: user.username,
-      id: user._id,
-      isAdmin: user.isAdmin,
-    });
+  res.status(200).send({
+    token,
+    username: user.username,
+    id: user._id,
+    isAdmin: user.isAdmin,
+    message: "Logged in successfully",
+  });
 });
 
 module.exports = router;
