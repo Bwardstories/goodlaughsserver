@@ -23,7 +23,7 @@ router.post("/signup", async (req, res) => {
     if (savedUser) {
       return res
         .status(422)
-        .json({ error: "User already exists, please use another name" });
+        .send("User already exists, please use another name");
     }
     // if no user exists, hashes password
 
