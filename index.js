@@ -8,6 +8,14 @@ require("dotenv").config();
 
 // define port
 const port = 4000;
+// intiializes backend
+const app = express();
+
+// middleware
+app.use(cors());
+app.use(express.json());
+app.use(morgan("dev"));
+app.use("/api", router);
 
 // Connect to mongoDB
 
@@ -31,12 +39,3 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", err => {
   console.log("err connecting", err);
 });
-
-// intiializes backend
-const app = express();
-
-// middleware
-app.use(cors());
-app.use(express.json());
-app.use(morgan("dev"));
-app.use("/api", router);
