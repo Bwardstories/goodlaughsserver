@@ -24,4 +24,14 @@ router.post("/createEvent", async (req, res) => {
     });
 });
 
+router.get("/getEvents", async (req, res) => {
+  Event.find({})
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
 module.exports = router;
