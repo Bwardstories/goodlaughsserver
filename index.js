@@ -16,7 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api", router);
-
+app.get("/", (req, res) => {
+  res.send("hello World");
+});
 // Connect to mongoDB
 
 mongoose
