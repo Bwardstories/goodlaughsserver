@@ -19,8 +19,6 @@ app.use("/api", router);
 
 // Connect to mongoDB
 
-app.get("/", "hello world");
-
 mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
