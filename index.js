@@ -39,3 +39,7 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", err => {
   console.log("err connecting", err);
 });
+
+app.get("/", (req, res) => {
+  res.send("hello World");
+});
