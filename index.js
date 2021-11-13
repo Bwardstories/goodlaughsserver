@@ -7,7 +7,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 
 // define port
-const port = 4000;
+const port = process.env.PORT || 3000;
 // intiializes backend
 const app = express();
 
