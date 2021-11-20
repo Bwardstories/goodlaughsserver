@@ -56,13 +56,14 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   // checks for password and email
+  let tempEmail = email.toLowerCase();
   if (!email || !password) {
     return res
       .status(422)
       .json({ error: "Please enter a valid email and password" });
   }
-  //  searches for user by email, and then compares the password with the hashed password
-  const user = await User.findOne({ email: email });
+  //  searches for user by email, and then compares the password with the hashed password ...
+  const user = await User.findOne({ email: tempEmail });
 
   if (!user) {
     return res.status(401).json({ error: "That Email is not registered" });
