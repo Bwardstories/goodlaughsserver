@@ -12,6 +12,7 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   const { username, password, email } = req.body;
   //  makes sure each field was entered
+  let tempEmail = email.toLowerCase();
   if (!password || !username || !email) {
     return res.status(422).json({
       error: "Please enter a vaild email, username, and password",
@@ -32,7 +33,7 @@ router.post("/signup", async (req, res) => {
       .then(hashedpassword => {
         const user = new User({
           username,
-          email,
+          email: tempEmail,
           passwordHash: hashedpassword,
           isAdmin: email === "thewardbunch@gmail.com" ? true : false,
         });
