@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
       .status(422)
       .json({ error: "Please enter a valid email and password" });
   }
-  //  searches for user by email, and then compares the password with the hashed password
+  //  searches for user by email, and then compares the password with the hashed password ...
   const user = await User.findOne({ email: tempEmail });
 
   if (!user) {
