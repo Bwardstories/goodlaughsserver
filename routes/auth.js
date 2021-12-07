@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
           isAdmin:
             email === "thewardbunch@gmail.com" ||
             email === "brianwardfo8@gmail.com" ||
-            email === "keithdcomedy@gmail.com"
+            tempEmail === "keithdcomedy@gmail.com"
               ? true
               : false,
         });
