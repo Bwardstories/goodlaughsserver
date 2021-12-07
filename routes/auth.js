@@ -28,7 +28,7 @@ router.post("/signup", async (req, res) => {
     }
 
     // if no user exists, hashes password
-
+    console.log(tempEmail);
     bcrypt
       .hash(password, 12)
       .then(hashedpassword => {
@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
           isAdmin:
             email === "thewardbunch@gmail.com" ||
             email === "brianwardfo8@gmail.com" ||
-            email === "kiethDcomedy@gmail.com"
+            email === "keithdcomedy@gmail.com"
               ? true
               : false,
         });
