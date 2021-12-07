@@ -26,8 +26,9 @@ router.post("/signup", async (req, res) => {
         .status(422)
         .send("User already exists, please use another name");
     }
-    // if no user exists, hashes password
 
+    // if no user exists, hashes password
+    console.log(tempEmail);
     bcrypt
       .hash(password, 12)
       .then(hashedpassword => {
@@ -35,7 +36,12 @@ router.post("/signup", async (req, res) => {
           username,
           email: tempEmail,
           passwordHash: hashedpassword,
-          isAdmin: email === "thewardbunch@gmail.com" ? true : false,
+          isAdmin:
+            email === "thewardbunch@gmail.com" ||
+            email === "brianwardfo8@gmail.com" ||
+            email === "keithdcomedy@gmail.com"
+              ? true
+              : false,
         });
         user
           .save()
