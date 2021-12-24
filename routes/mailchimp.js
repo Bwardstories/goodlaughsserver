@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const router = express.Router()
 
-router.post('/mailchimp', async (req, res) => {
+router.post('/addmember', async (req, res) => {
   const { firstname, lastname, email } = req.body
 
   if (!firstname || !lastname || !email) {
