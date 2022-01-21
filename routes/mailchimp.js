@@ -17,7 +17,7 @@ router.post('/addmember', async (req, res) => {
   try {
     axios
       .post(
-        `https://us3.api.mailchimp.com/3.0/lists/${process.env.REACT_APP_AUDIENCE_ID}/members/`,
+        `https://us3.api.mailchimp.com/3.0/lists/cf3ba20818/members/`,
         {
           'email_address': email,
           'merge_fields': {
