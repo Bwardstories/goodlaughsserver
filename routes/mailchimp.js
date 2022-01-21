@@ -13,11 +13,11 @@ router.post('/addmember', async (req, res) => {
       error: 'Please enter a first name, last name, and email address',
     })
   }
-  // trying
+
   try {
     axios
       .post(
-        `https://us3.api.mailchimp.com/3.0/lists/cf3ba20818/members/`,
+        `https://us3.api.mailchimp.com/3.0/lists/${process.env.REACT_APP_AUDIENCE_ID}/members/`,
         {
           'email_address': email,
           'merge_fields': {
