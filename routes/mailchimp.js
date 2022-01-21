@@ -13,7 +13,7 @@ router.post('/addmember', async (req, res) => {
       error: 'Please enter a first name, last name, and email address',
     })
   }
-
+  // trying
   try {
     axios
       .post(
