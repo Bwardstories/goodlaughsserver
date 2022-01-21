@@ -28,7 +28,7 @@ router.post('/addmember', async (req, res) => {
         },
         {
           headers: {
-            'Authorization': `Basic d8e8e9e551cedb2b7428794d2e89bca2-us3`,
+            'Authorization': `Basic ${process.env.REACT_APP_MAILCHIMP_API_KEY}`,
           },
         }
       )
